@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - KALAMANDIR</title>
+    <meta name="description" content="Photo Gallery - Kalamandir Orissa's Most Popular Fashion Shop">
+    <meta name="keywords"
+        content="kalamandirorissa.com, Bhubaneswar Fashion, Orissa Fashion, Kalamandir, Photo Gallery">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .top-header {
+            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .header-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu>li {
+            position: relative;
+        }
+
+        .nav-menu>li>a {
+            display: block;
+            padding: 15px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu>li>a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #000;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(to bottom, #FCF6BA, #FBF5B7);
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-top: 2px solid #AA771C;
+        }
+
+        .nav-menu>li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(170, 119, 28, 0.3);
+            transition: all 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #dfc37d;
+            padding-left: 25px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gallery-category {
+            margin-bottom: 50px;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-title {
+            color: #FF6600;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #CB1818;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(203, 24, 24, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(203, 24, 24, 0.9), transparent);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item-overlay p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Modal for full-size images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: zoom 0.3s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ED1D1D;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            margin-top: 50px;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-links {
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu>li {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+            }
+
+            .nav-menu>li.active .dropdown {
+                display: block;
+            }
+
+            .category-title {
+                font-size: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+
+            .modal-close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 60px;
+            }
+
+            .nav-menu>li>a {
+                padding: 12px 15px;
+            }
+
+            .gallery-category {
+                padding: 20px;
+            }
+
+            .gallery-item img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/kalamandir_logo.jpg" alt="Kalamandir Logo"></a>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Home</a> |
+                <a href="contactus.html">Contact Us</a> |
+                <a href="sitemap.html">Sitemap</a> |
+                <a href="feedback.php">Feedback</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="about_kalamandir.html">About Kalamandir</a></li>
+                <li>
+                    <a href="#">Men's Fashion</a>
+                    <div class="dropdown">
+                        <a href="suiting_shirting.html">Suiting / Shirting</a>
+                        <a href="mens_formals.html">Men's Formals</a>
+                        <a href="men_casuals.html">Men's Casuals</a>
+                        <a href="mens_ethnic_wear.html">Ethnic Wear</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Ladies Fashion</a>
+                    <div class="dropdown">
+                        <a href="dress_materials.html">Dress Materials</a>
+                        <a href="party_wear.html">Party Wear</a>
+                        <a href="ethnic_wear.html">Ethnic Wear</a>
+                        <a href="lingerie.html">Lingerie</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Sarees</a>
+                    <div class="dropdown">
+                        <a href="odissi_sarees.html">Odissi Sarees</a>
+                        <a href="wedding_sarees.html">Wedding Sarees</a>
+                        <a href="general_sarees.html">General Sarees</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Kids Fashion</a>
+                    <div class="dropdown">
+                        <a href="garments_boys.html">Boys Garments</a>
+                        <a href="garments_girls.html">Girls Garments</a>
+                        <a href="infants.html">Infants & New Borns</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Winter Collection</a>
+                    <div class="dropdown">
+                        <a href="winter_collections.html">Shawls</a>
+                        <a href="winter_collections.html">Jackets</a>
+                        <a href="winter_collections.html">Knit Wear</a>
+                        <a href="winter_collections.html">Blankets</a>
+                    </div>
+                </li>
+                <li><a href="furnishings.html">Furnishings</a></li>
+                <li><a href="Photogallery.html">Photo Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="page-title">
+            <img src="photogallery/gallery-title.jpg" alt="Photo Gallery">
+        </div>
+
+        <!-- Showroom - Outside View -->
+        <div class="gallery-category">
+            <h2 class="category-title">Showroom - Outside View</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('photogallery/gal1-big.jpg')">
+                    <img src="photogallery/gal1.jpg" alt="Kalamandir Front Door View">
+                    <div class="gallery-item-overlay">
+                        <p>Kalamandir Front Door View</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('photogallery/gal2-big.jpg')">
+                    <img src="photogallery/gal2.jpg" alt="Front View">
+                    <div class="gallery-item-overlay">
+                        <p>Front View</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('photogallery/gal3-big.jpg')">
+                    <img src="photogallery/gal3.jpg" alt="Side View">
+                    <div class="gallery-item-overlay">
+                        <p>Side View</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suiting Shirting -->
+        <div class="gallery-category">
+            <h2 class="category-title">Suiting Shirting</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('mensformal/formal1.jpg')">
+                    <img src="mensformal/formal1.jpg" alt="Mens Garments">
+                    <div class="gallery-item-overlay">
+                        <p>Premium Suiting Collection</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('mensformal/formal2.jpg')">
+                    <img src="mensformal/formal2.jpg" alt="Suiting Section">
+                    <div class="gallery-item-overlay">
+                        <p>Designer Suits</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('menscasual/casual1.jpg')">
+                    <img src="menscasual/casual1.jpg" alt="Shirting Collection">
+                    <div class="gallery-item-overlay">
+                        <p>Shirting & Casuals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dress Materials & Matching Centre -->
+        <div class="gallery-category">
+            <h2 class="category-title">Kalamandir - Dress Materials & Matching Centre</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('dressmaterials/dress1.jpg')">
+                    <img src="dressmaterials/dress1.jpg" alt="Matching Centre">
+                    <div class="gallery-item-overlay">
+                        <p>Dress Materials Collection</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('partywear/party1.jpg')">
+                    <img src="partywear/party1.jpg" alt="Dresses">
+                    <div class="gallery-item-overlay">
+                        <p>Exclusive Party Wear</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('women_ethnic/wethnic1.jpg')">
+                    <img src="women_ethnic/wethnic1.jpg" alt="Dress Lengths">
+                    <div class="gallery-item-overlay">
+                        <p>Women's Ethnic Collection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kalamandir Sarees -->
+        <div class="gallery-category">
+            <h2 class="category-title">Kalamandir Sarees</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('sarees/saree1.jpg')">
+                    <img src="sarees/saree1.jpg" alt="Sarees Collection">
+                    <div class="gallery-item-overlay">
+                        <p>Exquisite Silk Sarees</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('sarees/saree2.jpg')">
+                    <img src="sarees/saree2.jpg" alt="Sarees Display">
+                    <div class="gallery-item-overlay">
+                        <p>Wedding Collection</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('sarees/saree3.jpg')">
+                    <img src="sarees/saree3.jpg" alt="Sarees Section">
+                    <div class="gallery-item-overlay">
+                        <p>Traditional Handlooms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kalamandir Garments -->
+        <div class="gallery-category">
+            <h2 class="category-title">Kalamandir Garments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('mensethnic/ethnic1.jpg')">
+                    <img src="mensethnic/ethnic1.jpg" alt="Mens Garments">
+                    <div class="gallery-item-overlay">
+                        <p>Men's Ethnic Wear</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('kids/kidswear1.jpg')">
+                    <img src="kids/kidswear1.jpg" alt="Garments Display">
+                    <div class="gallery-item-overlay">
+                        <p>Boys Garments</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('kids/kidswear-girl1.jpg')">
+                    <img src="kids/kidswear-girl1.jpg" alt="Garments Collection">
+                    <div class="gallery-item-overlay">
+                        <p>Girls Garments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about_kalamandir.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="clubcard.html">Club Card</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Shop By Category</h3>
+                <ul>
+                    <li><a href="suiting_shirting.html">Men's Fashion</a></li>
+                    <li><a href="dress_materials.html">Ladies Fashion</a></li>
+                    <li><a href="odissi_sarees.html">Sarees</a></li>
+                    <li><a href="garments_boys.html">Kids Fashion</a></li>
+                    <li><a href="winter_collections.html">Winter Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>3. Western Market<br>
+                    Bhubaneswar - 751009, INDIA</p>
+                <p><strong>Phone:</strong> +91 (0)674 2531 133</p>
+                <p><strong>Email:</strong> info@kalamandirorissa.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2026 Kalamandir. All Rights Reserved.</p>
+            <p>
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-menu > li > a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.nextElementSibling) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+
+        // Modal functions for full-size images
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImage.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

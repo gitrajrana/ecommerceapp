@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>:: Welcome to Kalamandir :: Feedback ::</title>
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+
+}
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FF0000;
+	font-weight: bold;
+}
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF6600;
+	font-style: italic;
+}
+.style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.style4 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+</style>
+<script language="javascript">
+<!--
+function echeck(str) {
+
+		var at="@"
+		var dot="."
+		var lat=str.indexOf(at)
+		var lstr=str.length
+		var ldot=str.indexOf(dot)
+		if (str.indexOf(at)==-1){
+		   alert("Invalid email address")
+		   return false
+		}
+
+		if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+		   alert("Invalid email address")
+		   return false
+		}
+
+		if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+		    alert("Invalid email address")
+		    return false
+		}
+
+		 if (str.indexOf(at,(lat+1))!=-1){
+		    alert("Invalid email address")
+		    return false
+		 }
+
+		 if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+		    alert("Invalid email address")
+		    return false
+		 }
+
+		 if (str.indexOf(dot,(lat+2))==-1){
+		    alert("Invalid email address")
+		    return false
+		 }
+		
+		 if (str.indexOf(" ")!=-1){
+		    alert("Invalid email address")
+		    return false
+		 }
+
+ 		 return true;				
+	}
+	 
+function validate()
+{
+	if(document.fm1.name.value=="" )
+	{
+		alert("Please Enter Name")
+		document.fm1.name.focus()
+		return false;
+	}
+	
+	else if(document.fm1.phone.value=="" )
+	{
+		alert("Please Enter Your Telephone Number:")
+		document.fm1.phone.focus()
+		return false;
+	}
+	if(isNaN(document.fm1.phone.value))
+{
+alert("Please Enter Numbers only for Telephone Number")
+document.fm1.phone.focus()
+return false ;
+}	
+	else if(document.fm1.email.value=="" )
+	{
+		alert("Please Enter email")
+		document.fm1.email.focus()
+		return false;
+	}
+  if(echeck(document.fm1.email.value)==false)
+	{document.fm1.email.focus()
+		return false;
+	}
+	
+	else if(document.fm1.message.value=="" )
+	{
+		alert("Please Enter Message")
+		document.fm1.message.focus()
+		return false;
+	}
+	
+   return true;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') { num = parseFloat(val);
+        if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert('The following error(s) occurred:\n'+errors);
+  document.MM_returnValue = (errors == '');
+}
+//-->
+</script>
+</head>
+
+<body>
+<br />
+<table width="70%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCFFFF">
+  <tr>
+    <td><table  border="0" cellpadding="3" cellspacing="1">
+      <form action="feedback_mail.php" method="post" name="fm1" id="fm1" onsubmit="return validate();">
+        <tr> <td> <span class="style1">Kalamandir Feedback Form</span></td>
+        </tr>
+		<tr> <td> <span class="style2">Please insert your valuable feedback details.</span> </td>
+        </tr>
+		<tr>
+          <td align="left"  bgcolor="#FF0000" class="bodytext style3">First Name </td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="firstname" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3">Last Name</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="lastname" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Gender</td>
+          <td>:</td>
+          <td align="left"><font face="Verdana, Arial, Helvetica" size="1">
+            <input type="radio" value="Male" name="rdogndr" />
+            </font><span class="style4">Male</span> &nbsp;&nbsp;&nbsp;&nbsp;<font face="Verdana, Arial, Helvetica" size="1">
+              <input type="radio" value="Female" name="rdogndr" />
+            </font><span class="style4">Female</span></td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Email ID </td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="email" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Ocupation</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="remail" type="text" maxlength="80" />
+                <br />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Address Details </td>
+          <td>:</td>
+          <td align="left"><textarea class="ft" name="address" cols="35" rows="5" wrapping="physical"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">City</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="city" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">State</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="state" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Postal Code</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="zip" type="text" maxlength="80" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Telephone</td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="phone" type="text" maxlength="32" /></td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3"">Fax </td>
+          <td>:</td>
+          <td align="left"><input class="ft" name="fax" type="text" maxlength="64" /></td>
+        </tr>
+        <tr>
+          <td align="left" bgcolor="#FF0000" class="bodytext style3""><p>Please insert your valuable<br /> 
+            Suggestion
+            or Feedback </p></td>
+          <td>:</td>
+          <td align="left"><textarea name="subject" cols="35" rows="6" class="ft" id="subject" wrapping="physical"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td align="center" valign="middle">&nbsp;</td>
+          <td align="left"><input name="Submit2" type="submit" class="submitbutton" onclick="MM_validateForm('firstname','','R','lastname','','R','email','','RisEmail','city','','R','provience/state','','R','zip','','RisNum','phone','','RisNum','address','','R','subject','','R');return document.MM_returnValue" value="Submit" />
+            &nbsp;&nbsp;
+            <input name="Submit2" type="reset" class="submitbutton" value="Reset" />
+          </td>
+        </tr>
+      </form>
+    </table>
+        <div align="right"><br />
+        <a href="#form">Top</a></div></td>
+  </tr>
+</table>
+</body>
+</html>

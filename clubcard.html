@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalamandir Club Card - KALAMANDIR</title>
+    <meta name="description" content="Join Kalamandir Club Card program for exclusive benefits and rewards">
+    <meta name="keywords" content="Kalamandir Club Card, Rewards, Benefits, Shopping, Bhubaneswar">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .top-header {
+            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .header-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: #CB1818;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu > li > a:hover {
+            background-color: #ED1D1D;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #555555;
+            min-width: 200px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-menu > li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #666;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #990000;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Club Card Section */
+        .clubcard-section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #CB1818;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Hero Image Card */
+        .hero-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .hero-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .welcome-card h2 {
+            color: #CB1818;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #CB1818;
+            padding-bottom: 10px;
+        }
+
+        .card-image-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(237, 29, 29, 0.05) 0%, rgba(203, 24, 24, 0.05) 100%);
+            border-radius: 8px;
+        }
+
+        .card-image-section img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Benefits Card */
+        .benefits-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .benefits-card h3 {
+            color: #CB1818;
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #CB1818;
+            padding-bottom: 10px;
+        }
+
+        .benefits-card p {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, rgba(237, 29, 29, 0.05) 0%, rgba(203, 24, 24, 0.05) 100%);
+            border-left: 4px solid #CB1818;
+            border-radius: 4px;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #555;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(203, 24, 24, 0.2);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-box h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid white;
+            padding-bottom: 8px;
+        }
+
+        .info-box p {
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* CTA Card */
+        .cta-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .cta-card h3 {
+            color: #CB1818;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .cta-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #ED1D1D;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: #CB1818;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #CB1818 0%, #ED1D1D 100%);
+            color: white;
+            margin-top: 50px;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-links {
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu > li {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+            }
+
+            .nav-menu > li.active .dropdown {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .welcome-card,
+            .benefits-card,
+            .cta-card {
+                padding: 20px;
+            }
+
+            .card-image-section img {
+                max-width: 100%;
+            }
+
+            .benefits-list li {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 60px;
+            }
+
+            .nav-menu > li > a {
+                padding: 12px 15px;
+            }
+
+            .welcome-card,
+            .benefits-card,
+            .cta-card {
+                padding: 15px;
+            }
+
+            .hero-card {
+                padding: 15px;
+            }
+
+            .cta-btn {
+                padding: 10px 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/kalamandir_logo.jpg" alt="Kalamandir Logo"></a>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Home</a> |
+                <a href="contactus.html">Contact Us</a> |
+                <a href="sitemap.html">Sitemap</a> |
+                <a href="feedback.php">Feedback</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="about_kalamandir.html">About Kalamandir</a></li>
+                <li>
+                    <a href="#">Men's Fashion</a>
+                    <div class="dropdown">
+                        <a href="suiting_shirting.html">Suiting / Shirting</a>
+                        <a href="mens_formals.html">Men's Formals</a>
+                        <a href="men_casuals.html">Men's Casuals</a>
+                        <a href="mens_ethnic_wear.html">Ethnic Wear</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Ladies Fashion</a>
+                    <div class="dropdown">
+                        <a href="dress_materials.html">Dress Materials</a>
+                        <a href="party_wear.html">Party Wear</a>
+                        <a href="ethnic_wear.html">Ethnic Wear</a>
+                        <a href="lingerie.html">Lingerie</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Sarees</a>
+                    <div class="dropdown">
+                        <a href="odissi_sarees.html">Odissi Sarees</a>
+                        <a href="wedding_sarees.html">Wedding Sarees</a>
+                        <a href="general_sarees.html">General Sarees</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Kids Fashion</a>
+                    <div class="dropdown">
+                        <a href="garments_boys.html">Boys Garments</a>
+                        <a href="garments_girls.html">Girls Garments</a>
+                        <a href="infants.html">Infants & New Borns</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Winter Collection</a>
+                    <div class="dropdown">
+                        <a href="winter_collections.html">Shawls</a>
+                        <a href="winter_collections.html">Jackets</a>
+                        <a href="winter_collections.html">Knit Wear</a>
+                        <a href="winter_collections.html">Blankets</a>
+                    </div>
+                </li>
+                <li><a href="furnishings.html">Furnishings</a></li>
+                <li><a href="Photogallery.html">Photo Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Club Card Section -->
+    <section class="clubcard-section">
+        <h1 class="page-title">Kalamandir Club Card</h1>
+
+        <!-- Hero Image -->
+        <div class="hero-card">
+            <img src="images/clubcard.jpg" alt="Kalamandir Club Card">
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+            <h2>Welcome to Kalamandir Club</h2>
+
+            <div class="card-image-section">
+                <img src="images/kalamandir_club_card.jpg" alt="Kalamandir Club Card">
+            </div>
+
+            <p>More shopping at Kalamandir means more gifts and more benefits. Kalamandir respects its customers and rewards them by offering special gifts and benefits on special occasions. Among various such steps, the "Kalamandir Club Card" is most popular as through this, a customer is eligible for gifts throughout the year.</p>
+        </div>
+
+        <!-- Benefits Card -->
+        <div class="benefits-card">
+            <h3>Club Card Benefits</h3>
+
+            <ul class="benefits-list">
+                <li>Club card is issued on presentation of purchase bills worth Rs. 1500/-.</li>
+                <li>On completion of purchase worth Rs. 7500/- or more within 12 months, you are entitled to a gift of fabrics/garments from our range worth 7.5% of your total purchases. The gift must be availed within 30 days from the expiry of the card.</li>
+            </ul>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <h4>Important Information</h4>
+            <p>Your Kalamandir Club Card is valid for 12 months from the date of issue. Keep track of your purchases and claim your rewards within 30 days of card expiry to enjoy the full benefits of the program.</p>
+        </div>
+
+        <!-- CTA Card -->
+        <div class="cta-card">
+            <h3>Ready to Join?</h3>
+            <p>Visit any Kalamandir store with your purchase bills worth Rs. 1500/- and get your Club Card today!</p>
+            <a href="contactus.html" class="cta-btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about_kalamandir.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="clubcard.html">Club Card</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Shop By Category</h3>
+                <ul>
+                    <li><a href="suiting_shirting.html">Men's Fashion</a></li>
+                    <li><a href="dress_materials.html">Ladies Fashion</a></li>
+                    <li><a href="odissi_sarees.html">Sarees</a></li>
+                    <li><a href="garments_boys.html">Kids Fashion</a></li>
+                    <li><a href="winter_collections.html">Winter Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>3. Western Market<br>
+                Bhubaneswar - 751009, INDIA</p>
+                <p><strong>Phone:</strong> +91 (0)674 2531 133</p>
+                <p><strong>Email:</strong> info@kalamandirorissa.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2026 Kalamandir. All Rights Reserved.</p>
+            <p>
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-menu > li > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && this.nextElementSibling) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

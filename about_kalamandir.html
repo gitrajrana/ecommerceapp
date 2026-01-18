@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kalamandir - KALAMANDIR</title>
+    <meta name="description" content="Learn about Kalamandir - Orissa's Most Popular Fashion Shop since 1949">
+    <meta name="keywords" content="kalamandirorissa.com, Bhubaneswar Fashion, Orissa Fashion, Kalamandir, About">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .top-header {
+            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .header-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu>li {
+            position: relative;
+        }
+
+        .nav-menu>li>a {
+            display: block;
+            padding: 15px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu>li>a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #000;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(to bottom, #FCF6BA, #FBF5B7);
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-top: 2px solid #AA771C;
+        }
+
+        .nav-menu>li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(170, 119, 28, 0.3);
+            transition: all 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #dfc37d;
+            padding-left: 25px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #CB1818;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .about-card h3 {
+            color: #CB1818;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .section-heading {
+            color: #ED1D1D;
+            font-size: 20px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 2px solid #CB1818;
+            padding-bottom: 8px;
+        }
+
+        .about-content {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #333;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* Story Section with Image */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+            margin-bottom: 30px;
+        }
+
+        .story-text {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #333;
+            text-align: justify;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 250px;
+            background: url('images/kalamandirmainbuilding.jpg') center center no-repeat;
+            background-size: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            margin-top: 50px;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-links {
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu>li {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+            }
+
+            .nav-menu>li.active .dropdown {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .about-card {
+                padding: 20px;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .story-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 60px;
+            }
+
+            .nav-menu>li>a {
+                padding: 12px 15px;
+            }
+
+            .about-card {
+                padding: 15px;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
+
+            .about-card h3 {
+                font-size: 18px;
+            }
+
+            .section-heading {
+                font-size: 17px;
+            }
+
+            .story-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/kalamandir_logo.jpg" alt="Kalamandir Logo"></a>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Home</a> |
+                <a href="contactus.html">Contact Us</a> |
+                <a href="sitemap.html">Sitemap</a> |
+                <a href="feedback.php">Feedback</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="about_kalamandir.html">About Kalamandir</a></li>
+                <li>
+                    <a href="#">Men's Fashion</a>
+                    <div class="dropdown">
+                        <a href="suiting_shirting.html">Suiting / Shirting</a>
+                        <a href="mens_formals.html">Men's Formals</a>
+                        <a href="men_casuals.html">Men's Casuals</a>
+                        <a href="mens_ethnic_wear.html">Ethnic Wear</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Ladies Fashion</a>
+                    <div class="dropdown">
+                        <a href="dress_materials.html">Dress Materials</a>
+                        <a href="party_wear.html">Party Wear</a>
+                        <a href="ethnic_wear.html">Ethnic Wear</a>
+                        <a href="lingerie.html">Lingerie</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Sarees</a>
+                    <div class="dropdown">
+                        <a href="odissi_sarees.html">Odissi Sarees</a>
+                        <a href="wedding_sarees.html">Wedding Sarees</a>
+                        <a href="general_sarees.html">General Sarees</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Kids Fashion</a>
+                    <div class="dropdown">
+                        <a href="garments_boys.html">Boys Garments</a>
+                        <a href="garments_girls.html">Girls Garments</a>
+                        <a href="infants.html">Infants & New Borns</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Winter Collection</a>
+                    <div class="dropdown">
+                        <a href="wintercollections.html">Shawls</a>
+                        <a href="wintercollections.html">Jackets</a>
+                        <a href="wintercollections.html">Knit Wear</a>
+                        <a href="wintercollections.html">Blankets</a>
+                    </div>
+                </li>
+                <li><a href="furnishings.html">Furnishings</a></li>
+                <li><a href="Photogallery.html">Photo Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h1 class="page-title">About Kalamandir</h1>
+
+        <!-- Main About Card -->
+        <div class="about-card">
+            <h3 class="section-heading">Our Story</h3>
+
+            <div class="story-section">
+                <div class="story-text">
+                    Incepted way back in 1949 as "Burma General Stores" today's Kalamandir is a mega shopping experience
+                    for people in and around Orissa. Kalamandir a leading fashion house of Eastern India is managed by
+                    Bhubaneswar's well-known "The Singh Family". Latest trends in fashion, high quality customer service
+                    and its perfect location in the heart of city centre attract both celebrities, tourists and the
+                    common people to taste the ever festive mood of Kalamandir Shopping.
+                </div>
+                <div class="story-image"></div>
+            </div>
+
+            <p class="about-content">
+                'Kalamandir' has been the mentor of exclusive trends in fashion since the last five decades. Style does
+                not simply encompass the ruling trends. It is a complete aesthetic statement. Here in 'Kalamandir' you
+                will find every opportunity to revel in style. Kalamandir is a complete "Family Shop" with separate
+                sections for everyone. Kalamandir offers over 8000 sqft of shopping space, which is aesthetically
+                decorated, and centrally air conditioned for customers' comfort and shopping pleasure.
+            </p>
+
+            <p class="about-content">
+                Kalamandir's strength lies in its variety. It houses clothes for all ages, occasions and sentiments. It
+                is one of the best stores in Eastern India where one can shop for every member of the family a "one-stop
+                shop". Completing more than half a century, 'Kalamandir' has always been successful in bringing smiles
+                on the faces of thousands of its customers. Today, 'Kalamandir' has become Orissa's premier fashion
+                destination stocking the widest range in men's wear, ladies wear, kids wear and furnishings, all under
+                one roof.
+            </p>
+
+            <h3 class="section-heading">Philanthropy</h3>
+
+            <p class="about-content">
+                All the three brothers Sardar Gurdayal Singh, Sardar Rajinder Singh, Sardar Tajinder Singh are actively
+                involved in social work through various cultural organisations. After the devastation of the Super
+                Cyclone in October 1999, Mr. Gurdayal Singh was closely involved along with a social organisation from
+                Punjab that set up mass kitchens in Jagatsinghpur and Ersama and fed thousands of people for nearly
+                twenty days.
+            </p>
+
+            <p class="about-content">
+                Kalamandir has been doing community services where it has helped weaker section of the society
+                distributing cycle rickshaws, blankets and saving certificates.
+            </p>
+
+            <h3 class="section-heading">Beyond Kalamandir</h3>
+
+            <p class="about-content">
+                The Singh Family has been involved in many projects creating employment opportunity in Bhubaneswar. The
+                group has successfully extended to franchise stores like The Raymond Showroom, Van Heusen / Allen Solly
+                Showroom. "The Royale Midtown" hotel, strategically located in the heart of the city has already made a
+                niche for itself in the rapidly growing hospitality industry of the state.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about_kalamandir.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="clubcard.html">Club Card</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Shop By Category</h3>
+                <ul>
+                    <li><a href="suiting_shirting.html">Men's Fashion</a></li>
+                    <li><a href="dress_materials.html">Ladies Fashion</a></li>
+                    <li><a href="odissi_sarees.html">Sarees</a></li>
+                    <li><a href="garments_boys.html">Kids Fashion</a></li>
+                    <li><a href="wintercollections.html">Winter Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>3. Western Market<br>
+                    Bhubaneswar - 751009, INDIA</p>
+                <p><strong>Phone:</strong> +91 (0)674 2531 133</p>
+                <p><strong>Email:</strong> info@kalamandirorissa.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2026 Kalamandir. All Rights Reserved.</p>
+            <p>
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-menu > li > a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.nextElementSibling) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

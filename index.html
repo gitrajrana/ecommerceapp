@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KALAMANDIR - Orissa's Most Popular Fashion Shop</title>
+    <meta name="description" content="Kalamandir Orissa's Most Popular Fashion Shop">
+    <meta name="keywords" content="kalamandirorissa.com, Bhubaneswar Fashion, Orissa Fashion, Kalamandir">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .top-header {
+            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .header-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu>li {
+            position: relative;
+        }
+
+        .nav-menu>li>a {
+            display: block;
+            padding: 15px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu>li>a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #000;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(to bottom, #FCF6BA, #FBF5B7);
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-top: 2px solid #AA771C;
+        }
+
+        .nav-menu>li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #3E2723;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(170, 119, 28, 0.3);
+            transition: all 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #dfc37d;
+            padding-left: 25px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 500px;
+            /* Fixed height for premium feel */
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: transform 6s ease-out;
+        }
+
+        .carousel-slide.active img {
+            transform: scale(1.1);
+            /* Ken Burns effect */
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .slide-content {
+            color: white;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out 0.4s;
+        }
+
+        .carousel-slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #FCF6BA;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .slide-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #AA771C);
+            color: #3E2723;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(191, 149, 63, 0.4);
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 20px;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: #FCF6BA;
+            transform: scale(1.2);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .slideshow-container {
+                height: 400px;
+            }
+
+            .slide-content h2 {
+                font-size: 32px;
+            }
+
+            .carousel-overlay {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slideshow-container {
+                height: 300px;
+            }
+
+            .slide-content h2 {
+                font-size: 24px;
+            }
+
+            .slide-content p {
+                font-size: 14px;
+            }
+        }
+
+
+        /* Categories Grid */
+        .categories-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ED1D1D;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(203, 24, 24, 0.3);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-card h3 {
+            color: #ED1D1D;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .category-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 20px;
+            background-color: #ED1D1D;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .category-card a:hover {
+            background-color: #ED1D1D;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            margin-top: 50px;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-links {
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu>li {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+            }
+
+            .nav-menu>li.active .dropdown {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 60px;
+            }
+
+            .nav-menu>li>a {
+                padding: 12px 15px;
+            }
+
+            .category-card img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/kalamandir_logo.jpg" alt="Kalamandir Logo"></a>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Home</a> |
+                <a href="contactus.html">Contact Us</a> |
+                <a href="sitemap.html">Sitemap</a> |
+                <a href="feedback.php">Feedback</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="about_kalamandir.html">About Kalamandir</a></li>
+                <li>
+                    <a href="#">Men's Fashion</a>
+                    <div class="dropdown">
+                        <a href="suiting_shirting.html">Suiting / Shirting</a>
+                        <a href="mens_formals.html">Men's Formals</a>
+                        <a href="men_casuals.html">Men's Casuals</a>
+                        <a href="mens_ethnic_wear.html">Ethnic Wear</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Ladies Fashion</a>
+                    <div class="dropdown">
+                        <a href="dress_materials.html">Dress Materials</a>
+                        <a href="party_wear.html">Party Wear</a>
+                        <a href="ethnic_wear.html">Ethnic Wear</a>
+                        <a href="lingerie.html">Lingerie</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Sarees</a>
+                    <div class="dropdown">
+                        <a href="odissi_sarees.html">Odissi Sarees</a>
+                        <a href="wedding_sarees.html">Wedding Sarees</a>
+                        <a href="general_sarees.html">General Sarees</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Kids Fashion</a>
+                    <div class="dropdown">
+                        <a href="garments_boys.html">Boys Garments</a>
+                        <a href="garments_girls.html">Girls Garments</a>
+                        <a href="infants.html">Infants & New Borns</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Winter Collection</a>
+                    <div class="dropdown">
+                        <a href="winter_collections.html">Shawls</a>
+                        <a href="winter_collections.html">Jackets</a>
+                        <a href="winter_collections.html">Knit Wear</a>
+                        <a href="winter_collections.html">Blankets</a>
+                    </div>
+                </li>
+                <li><a href="furnishings.html">Furnishings</a></li>
+                <li><a href="Photogallery.html">Photo Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Slideshow -->
+    <section class="hero-section">
+        <div class="slideshow-container" id="carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+                <img src="sarees/saree1.jpg" alt="Kalamandir Fashion">
+                <div class="carousel-overlay">
+                    <div class="slide-content">
+                        <h2>Orissa's Most Popular Fashion Shop</h2>
+                        <p>Experience the finest in fashion with our exclusive collections.</p>
+                        <a href="about_kalamandir.html" class="slide-btn">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+                <img src="mensethnic/ethnic1.jpg" alt="Men's Fashion">
+                <div class="carousel-overlay">
+                    <div class="slide-content">
+                        <h2>Men's Style Reimagined</h2>
+                        <p>Discover premium suiting, shirting, and ethnic wear.</p>
+                        <a href="suiting_shirting.html" class="slide-btn">Shop Men's</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <img src="sarees/saree2.jpg" alt="Sarees Collection">
+                <div class="carousel-overlay">
+                    <div class="slide-content">
+                        <h2>Elegant Sarees Collection</h2>
+                        <p>Exquisite Odissi, wedding, and general sarees for every occasion.</p>
+                        <a href="odissi_sarees.html" class="slide-btn">Shop Sarees</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+                <img src="kids/kidswear1.jpg" alt="Kids Fashion">
+                <div class="carousel-overlay">
+                    <div class="slide-content">
+                        <h2>Adorable Kids Fashion</h2>
+                        <p>Comfort and style for your little ones.</p>
+                        <a href="garments_boys.html" class="slide-btn">Shop Kids</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="carousel-slide">
+                <img src="wintercollection/winter1.jpg" alt="Winter Collection">
+                <div class="carousel-overlay">
+                    <div class="slide-content">
+                        <h2>Winter Magic</h2>
+                        <p>Stay warm and stylish with our premium winter wear.</p>
+                        <a href="winter_collections.html" class="slide-btn">Shop Winter</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-nav-btn prev-btn" id="prevSlide">❮</button>
+            <button class="carousel-nav-btn next-btn" id="nextSlide">❯</button>
+
+            <!-- Dots -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <h2 class="section-title">Explore Our Collections</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="mensethnic/ethnic1.jpg" alt="Men's Fashion">
+                <div class="category-card-content">
+                    <h3>Men's Fashion</h3>
+                    <p>Discover premium suiting, shirting, formals & casuals</p>
+                    <a href="suiting_shirting.html">Shop Now</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="partywear/party1.jpg" alt="Ladies Fashion">
+                <div class="category-card-content">
+                    <h3>Ladies Fashion</h3>
+                    <p>Elegant dress materials, party wear & ethnic collections</p>
+                    <a href="dress_materials.html">Shop Now</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="sarees/saree1.jpg" alt="Sarees Collection">
+                <div class="category-card-content">
+                    <h3>Sarees Collection</h3>
+                    <p>Exquisite Odissi, wedding & general sarees</p>
+                    <a href="odissi_sarees.html">Shop Now</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="kids/kidswear-girl1.jpg" alt="Kids Fashion">
+                <div class="category-card-content">
+                    <h3>Kids Fashion</h3>
+                    <p>Adorable garments for boys, girls & infants</p>
+                    <a href="garments_boys.html">Shop Now</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="wintercollection/winter1.jpg" alt="Winter Collection">
+                <div class="category-card-content">
+                    <h3>Winter Collection</h3>
+                    <p>Stay warm with our shawls, jackets & blankets</p>
+                    <a href="winter_collections.html">Shop Now</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="furnsings/furnishing1.jpg" alt="Furnishings">
+                <div class="category-card-content">
+                    <h3>Furnishings</h3>
+                    <p>Beautiful home furnishing collections</p>
+                    <a href="furnishings.html">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about_kalamandir.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                    <li><a href="clubcard.html">Club Card</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Shop By Category</h3>
+                <ul>
+                    <li><a href="suiting_shirting.html">Men's Fashion</a></li>
+                    <li><a href="dress_materials.html">Ladies Fashion</a></li>
+                    <li><a href="odissi_sarees.html">Sarees</a></li>
+                    <li><a href="garments_boys.html">Kids Fashion</a></li>
+                    <li><a href="winter_collections.html">Winter Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>3. Western Market<br>
+                    Bhubaneswar - 751009, INDIA</p>
+                <p><strong>Phone:</strong> +91 (0)674 2531 133</p>
+                <p><strong>Email:</strong> info@kalamandirorissa.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyrights 2026 Kalamandir. All Rights Reserved.</p>
+            <p>
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Advanced Carousel Functionality
+        const carousel = {
+            slides: document.querySelectorAll('.carousel-slide'),
+            dotsContainer: document.getElementById('carouselDots'),
+            prevBtn: document.getElementById('prevSlide'),
+            nextBtn: document.getElementById('nextSlide'),
+            currentIndex: 0,
+            interval: null,
+            duration: 5000,
+
+            init() {
+                // Create dots
+                this.slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    this.dotsContainer.appendChild(dot);
+                });
+
+                // Add event listeners
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+                // Auto play
+                this.startAutoPlay();
+
+                // Pause on hover
+                const container = document.getElementById('carousel');
+                container.addEventListener('mouseenter', () => this.stopAutoPlay());
+                container.addEventListener('mouseleave', () => this.startAutoPlay());
+            },
+
+            updateSlides() {
+                this.slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === this.currentIndex);
+                });
+
+                const dots = this.dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            },
+
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+                this.updateSlides();
+            },
+
+            prevSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                this.updateSlides();
+            },
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateSlides();
+            },
+
+            startAutoPlay() {
+                this.stopAutoPlay();
+                this.interval = setInterval(() => this.nextSlide(), this.duration);
+            },
+
+            stopAutoPlay() {
+                if (this.interval) clearInterval(this.interval);
+            }
+        };
+
+        // Initialize carousel on load
+        document.addEventListener('DOMContentLoaded', () => carousel.init());
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-menu > li > a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.nextElementSibling) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
