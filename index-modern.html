@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,10 +22,10 @@
 
         /* Header */
         .top-header {
-            background: linear-gradient(135deg, #ED1D1D 0%, #CB1818 100%);
+            background: linear-gradient(135deg, #20318a 0%, #000f5c 100%);
             color: white;
             padding: 10px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -66,7 +67,7 @@
         /* Navigation */
         .main-nav {
             background-color: #CB1818;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -85,11 +86,11 @@
             flex-wrap: wrap;
         }
 
-        .nav-menu > li {
+        .nav-menu>li {
             position: relative;
         }
 
-        .nav-menu > li > a {
+        .nav-menu>li>a {
             display: block;
             padding: 15px 20px;
             color: white;
@@ -98,7 +99,7 @@
             transition: background-color 0.3s;
         }
 
-        .nav-menu > li > a:hover {
+        .nav-menu>li>a:hover {
             background-color: #ED1D1D;
         }
 
@@ -109,10 +110,10 @@
             background-color: #555555;
             min-width: 200px;
             display: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .nav-menu > li:hover .dropdown {
+        .nav-menu>li:hover .dropdown {
             display: block;
         }
 
@@ -152,7 +153,7 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .slideshow-container img {
@@ -186,7 +187,7 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
@@ -273,7 +274,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             font-size: 14px;
         }
 
@@ -311,7 +312,7 @@
                 display: flex;
             }
 
-            .nav-menu > li {
+            .nav-menu>li {
                 width: 100%;
             }
 
@@ -320,7 +321,7 @@
                 display: none;
             }
 
-            .nav-menu > li.active .dropdown {
+            .nav-menu>li.active .dropdown {
                 display: block;
             }
 
@@ -338,7 +339,7 @@
                 height: 60px;
             }
 
-            .nav-menu > li > a {
+            .nav-menu>li>a {
                 padding: 12px 15px;
             }
 
@@ -348,12 +349,13 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="top-header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html"><img src="images/kalamandir_logo.jpg" alt="Kalamandir Logo"></a>
+                <a href="index.html"><img src="images/kalamandir_logo.png" alt="Kalamandir Logo"></a>
             </div>
             <div class="header-links">
                 <a href="index.html">Home</a> |
@@ -501,7 +503,7 @@
             <div class="footer-section">
                 <h3>Contact Info</h3>
                 <p>3. Western Market<br>
-                Bhubaneswar - 751009, INDIA</p>
+                    Bhubaneswar - 751009, INDIA</p>
                 <p><strong>Phone:</strong> +91 (0)674 2531 133</p>
                 <p><strong>Email:</strong> info@kalamandirorissa.com</p>
             </div>
@@ -536,7 +538,7 @@
 
         // Mobile dropdown toggle
         document.querySelectorAll('.nav-menu > li > a').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 if (window.innerWidth <= 768 && this.nextElementSibling) {
                     e.preventDefault();
                     this.parentElement.classList.toggle('active');
@@ -545,4 +547,5 @@
         });
     </script>
 </body>
+
 </html>
